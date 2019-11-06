@@ -1,0 +1,99 @@
+/* simple queue using c-language 
+
+#include<stdio.h>
+#include<stdlib.h>
+#define MAXQ 100
+int front = 0, rear = -1;
+int items[MAXQ];
+int IsEmpty():
+int IsFull();
+int Insert(int);
+int Delete();
+int Traverse();
+int main()
+{
+int x;
+char ch = '1';
+printf("\n\t MENU\n***********");
+printf("\n1. INSERT");
+printf("\n2. DELETE");
+printf("\n3. TRAVERSE");
+printf("\n4. QUIT");
+while(ch != '4')
+{
+printf("\n\n ENter your choice from menu::");
+fflush(stdin);
+ch = getchar();
+switch(ch)
+{
+case '1':
+printf("\n Enter the element to be inserted into the queue");
+scanf("%d", &x);
+Insert(x);
+break;
+
+case '2':
+x = Delete();
+printf("\n Deleted element is: %d",x);
+break;
+
+case '3':
+Traverse();
+break;
+
+case '4':
+break;
+
+default:
+printf("\n wrong choice :: try again !!!");
+}
+}
+}
+
+int IsEmpty()
+{
+if (rear < front)
+return 1;
+else
+return 0;
+}
+
+int IsFull()
+{
+if(rear == MAXQ-1)
+return 1;
+else 
+return 0;
+}
+
+int Insert(int x)
+{
+if(IsFull())
+{
+printf("\n........queue is overflow.........");
+}
+rear++;
+items[rear] = x;
+}
+
+int Delete()
+{
+int x;
+if(IsEmpty())
+{
+printf("\n........queue is underflow........");
+}
+x = items[front];
+front++;
+return x;
+}
+
+int Traverse()
+{
+int i;
+printf("\n ELements in the queue are");
+for(i = front; i <= rear; i++)
+{
+printf("%d\n\t", items[i]);
+}
+
